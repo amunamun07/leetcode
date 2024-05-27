@@ -13,7 +13,7 @@ class NQueenII:
         self.chess_grid: List[List[bool]] = [[False for _ in range(size)] for _ in range(size)]
         self.solutions: List[List[List[bool]]] = []
 
-    def __can_be_placed(self, row: int, col: int) -> bool:
+    def can_be_placed(self, row: int, col: int) -> bool:
         """
         Check if a queen can be placed at the given position.
 
@@ -54,7 +54,7 @@ class NQueenII:
             return
 
         for col in range(self.n):
-            if self.__can_be_placed(row=row, col=col):
+            if self.can_be_placed(row=row, col=col):
                 self.chess_grid[row][col] = True
                 self.solve(row=row + 1)
                 self.chess_grid[row][col] = False

@@ -27,12 +27,17 @@ class TestNQueen(unittest.TestCase):
         self.assertEqual(len(n_queen.solutions), 92)
 
     def test_can_be_placed(self):
-        # Test the __can_be_placed method
+        # Test the _can_be_placed method indirectly through the public solve method
         n_queen = NQueenII(size=4)
+
+        # Set position (1, 2) to True
+        n_queen.chess_grid[1][2] = True
+
         # Test placing a queen at a valid position
-        self.assertTrue(n_queen._NQueenII__can_be_placed(1, 2))
+        self.assertTrue(n_queen.can_be_placed(2, 0))
+
         # Test placing a queen at an invalid position
-        self.assertFalse(n_queen._NQueenII__can_be_placed(2, 2))
+        self.assertFalse(n_queen.can_be_placed(2, 3))
 
 
 if __name__ == "__main__":
